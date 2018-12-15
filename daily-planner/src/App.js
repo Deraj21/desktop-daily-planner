@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import './reset.css';
 import './App.css';
+import routes from './routes';
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Daily Planner to Come!</h1>
+        { routes }
       </div>
     );
   }
 }
 
-export default App;
