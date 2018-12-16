@@ -7,7 +7,7 @@ import Login from './Components/Login';
 import MonthlyView from './Components/MonthlyView';
 
 export default (
-  <div>
+  <div className="Router">
     <Route exact path="/" component={Login}/>
     <Route path="/h/day/:date" component={DailyView}/>
     <Route path="/h/" component={Header}/>

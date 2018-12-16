@@ -1,4 +1,4 @@
-@import "https://fonts.googleapis.com/css?family=Merriweather|Open+Sans|Patrick+Hand";
+@import "https://fonts.googleapis.com/css?family=Merriweather|Open+Sans|Shadows+Into+Light";
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -48,12 +48,6 @@ table {
   border-spacing: 0;
 }
 
-.App {
-  min-height: 100vh;
-  min-width: 100vw;
-  background-color: #EFFFEC;
-}
-
 h1 {
   font-size: 48px;
 }
@@ -72,10 +66,64 @@ p {
 
 button {
   background-color: white;
-  padding: 10px;
-  font-family: "Patrick Hand", cursive;
+  color: #707070;
+  padding: 0px 30px;
+  font-family: "Shadows Into Light", cursive;
   border: solid black 1px;
   box-shadow: 0px 0px 32px -2px #707070;
+  cursor: pointer;
+}
+
+.App {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: #EFFFEC;
+}
+.App .Router {
+  height: 100vh;
+  width: 100vw;
+}
+
+.Login {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.Login h3 {
+  margin: 5px;
+}
+.Login input {
+  padding: 5px;
+  border: 1px solid #707070;
+  border-radius: 3px;
+  margin: 5px;
+}
+.Login button {
+  padding: 0px 100px;
+}
+.Login .title {
+  background-color: white;
+  color: #707070;
+  margin: 150px 0px 85px 0px;
+  padding: 5px 30px;
+  font-family: "Shadows Into Light", cursive;
+  border: solid black 1px;
+  box-shadow: 0px 0px 32px -2px #707070;
+}
+.Login .login-box {
+  display: flex;
+  flex-direction: column;
+  background-color: #E7E7E7;
+  font-family: "Open Sans", Arial, sans-serif;
+  border: 1px solid #707070;
+  border-radius: 3px;
+}
+.Login .input-boxes > div {
+  display: flex;
+  justify-content: space-between;
 }
 
 .DailyView {
@@ -95,7 +143,7 @@ button {
   width: 100vw;
   border-bottom: #707070 1px solid;
   box-shadow: 0px 0px 32px -2px #707070;
-  font-family: "Patrick Hand", cursive;
+  font-family: "Shadows Into Light", cursive;
 }
 .Header h1 {
   margin: 0px 25px 0px 5px;
