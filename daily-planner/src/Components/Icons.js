@@ -1,9 +1,9 @@
 import React from 'react';
 
-export function Menu() {
+export function MenuButton() {
   
   return (
-    <div className="menu">
+    <div className="MenuButton">
       <div className="dot"></div>
       <div className="dot"></div>
       <div className="dot"></div>
@@ -14,9 +14,20 @@ export function Menu() {
 export function Drag() {
   
   return (
-    <div className="drag">
+    <div className="Drag">
       <div className="bar"></div>
       <div className="bar"></div>
     </div>
   );
+}
+
+export function BackArrow() {
+
+  return (
+    <div className="BackArrow">
+      <div className="top"></div>
+      <div className="middle"></div>
+      <div className="bottom"></div>
+    </div>
+  )
 }

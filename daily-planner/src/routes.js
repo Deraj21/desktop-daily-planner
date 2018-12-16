@@ -8,9 +8,9 @@ import MonthlyView from './Components/MonthlyView';
 
 export default (
   <div>
-    <Route path="/" component={Header}/>
     <Route exact path="/" component={Login}/>
-    <Route path="/day/:date" component={DailyView}/>
-    <Route path="/month/:date" component={MonthlyView}/>
+    <Route path="/h/day/:date" component={DailyView}/>
+    <Route path="/h/" component={Header}/>
+    <Route path="/h/month/:date" component={MonthlyView}/>
   </div>
 )
