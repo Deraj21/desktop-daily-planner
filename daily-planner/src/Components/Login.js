@@ -14,10 +14,10 @@ export default class Login extends Component {
               <input type="text"/> <h3>Username</h3>
             </div>
             <div>
-              <input type="text"/> <h3>Password</h3>
+              <input type="password"/> <h3>Password</h3>
             </div>
           </div>
-          <button><h1>Login</h1></button>
+          <button> <h1>Login</h1> </button>
         </div>
       </div>
     );

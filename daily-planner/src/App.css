@@ -70,7 +70,7 @@ button {
   padding: 0px 30px;
   font-family: "Shadows Into Light", cursive;
   border: solid black 1px;
-  box-shadow: 0px 0px 32px -2px #707070;
+  box-shadow: 0px 0px 32px -7px #707070;
   cursor: pointer;
 }
 
@@ -100,22 +100,31 @@ button {
   border: 1px solid #707070;
   border-radius: 3px;
   margin: 5px;
+  font-size: 24px;
+  font-family: "Open Sans", Arial, sans-serif;
 }
 .Login button {
-  padding: 0px 100px;
+  padding: 0px 70px;
+  margin: 15px 0px 0px 0px;
+}
+.Login button h1 {
+  margin: -10px 0px;
 }
 .Login .title {
   background-color: white;
   color: #707070;
   margin: 150px 0px 85px 0px;
-  padding: 5px 30px;
+  padding: 5px 100px;
   font-family: "Shadows Into Light", cursive;
   border: solid black 1px;
-  box-shadow: 0px 0px 32px -2px #707070;
+  box-shadow: 0px 0px 32px -7px #707070;
 }
 .Login .login-box {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
   background-color: #E7E7E7;
   font-family: "Open Sans", Arial, sans-serif;
   border: 1px solid #707070;
@@ -124,6 +133,7 @@ button {
 .Login .input-boxes > div {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .DailyView {
