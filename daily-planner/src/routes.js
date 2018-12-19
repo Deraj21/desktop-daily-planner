@@ -13,4 +13,4 @@ export default (
     <Route path="/h/" component={Header}/>
     <Route path="/h/month/:date" component={MonthlyView}/>
   </div>
-)
+);

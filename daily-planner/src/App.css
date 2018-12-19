@@ -48,6 +48,14 @@ table {
   border-spacing: 0;
 }
 
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+}
+
+div {
+  box-sizing: border-box;
+}
+
 h1 {
   font-size: 48px;
 }
@@ -137,10 +145,38 @@ button {
 }
 
 .DailyView {
+  display: flex;
+  justify-content: space-around;
   background-color: #EFFFEC;
   margin-top: 70px;
   height: 100vh;
   width: 100vw;
+}
+.DailyView .times {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 15%;
+  text-align: center;
+  font-weight: bold;
+}
+.DailyView .hours {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 80%;
+}
+
+.Hour {
+  background-color: white;
+  height: 30px;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 15px;
 }
 
 .Header {
@@ -148,15 +184,16 @@ button {
   align-items: stretch;
   position: fixed;
   top: 0px;
-  background-color: white;
   height: 70px;
   width: 100vw;
-  border-bottom: #707070 1px solid;
-  box-shadow: 0px 0px 32px -2px #707070;
+  background-color: white;
+  border-bottom: 1px solid black;
+  box-shadow: 0px 0px 32px -7px #707070;
   font-family: "Shadows Into Light", cursive;
+  color: black;
 }
 .Header h1 {
-  margin: 0px 25px 0px 5px;
+  margin: 0px 20px 0px 10px;
 }
 .Header .date {
   display: flex;
