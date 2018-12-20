@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Login extends Component {
 
@@ -17,7 +18,7 @@ export default class Login extends Component {
               <input type="password"/> <h3>Password</h3>
             </div>
           </div>
-          <button> <h1>Login</h1> </button>
+          <Link to="/h/month/current"><button> <h1>Login</h1> </button></Link>
         </div>
       </div>
     );

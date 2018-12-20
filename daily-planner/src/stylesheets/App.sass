@@ -5,6 +5,9 @@
 body
   font-family: $font-sans
 
+::-webkit-scrollbar
+  display: none
+
 div
   box-sizing: border-box
 
@@ -34,10 +37,12 @@ button
   min-height: 100vh
   min-width: 100vw
   background-color: $color-green
+  position: relative
 
-  .Router
-    height: 100vh
-    width: 100vw
+.Router
+  height: 100vh
+  width: 100vw
+  position: relative
 
 
 @import 'Login.sass'
