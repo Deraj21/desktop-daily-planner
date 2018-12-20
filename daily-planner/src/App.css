@@ -187,6 +187,22 @@ button {
   margin: 0px 10px 15px 0px;
 }
 
+.MonthlyView {
+  padding-top: 70px;
+}
+.MonthlyView .week {
+  display: flex;
+}
+
+.Day {
+  height: 100px;
+  width: 100px;
+  background-color: white;
+  border: black 1px solid;
+  border-radius: 5px;
+  margin: 3px;
+}
+
 .Hour {
   display: flex;
   justify-content: center;
