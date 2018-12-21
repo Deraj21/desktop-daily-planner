@@ -18,7 +18,7 @@ export default class Hour extends Component {
   }
 
   componentDidMount(){
-    let outside = document.querySelector('.App');
+    let outside = document.querySelector('.DailyView');
     outside.addEventListener('mousedown', this.handleClickOut);
   }
 

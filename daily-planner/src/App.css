@@ -76,6 +76,11 @@ p {
   font-size: 16px;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 button {
   background-color: white;
   color: #707070;
@@ -188,19 +193,32 @@ button {
 }
 
 .MonthlyView {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   padding-top: 70px;
+  height: 100%;
 }
 .MonthlyView .week {
   display: flex;
+  justify-content: space-around;
+  height: 13%;
 }
 
 .Day {
-  height: 100px;
-  width: 100px;
+  height: 100%;
+  width: 12%;
   background-color: white;
   border: black 1px solid;
   border-radius: 5px;
-  margin: 3px;
+  margin: 2px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.Day:hover {
+  color: #707070;
+  background-color: #E7E7E7;
 }
 
 .Hour {
@@ -251,15 +269,15 @@ button {
   align-items: baseline;
   margin: auto;
 }
-.Header .back-arrow-box {
+.Header .icon-box {
   display: flex;
   align-items: center;
   height: 100%;
   cursor: pointer;
   margin-left: 15px;
 }
-.Header .back-arrow-box:hover {
-  filter: brightness(75%);
+.Header .icon-box:hover {
+  filter: brightness(0%);
 }
 
 .BackArrow {
@@ -282,6 +300,22 @@ button {
 .BackArrow .bottom {
   transform: translate(-7px) translateY(2px) rotate(45deg);
   width: 20px;
+}
+
+.MenuButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 20px;
+  width: 30px;
+  cursor: pointer;
+}
+.MenuButton .dot {
+  background-color: #707070;
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
 }
 
 /*# sourceMappingURL=App.css.map */
