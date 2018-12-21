@@ -18,7 +18,7 @@ export default class Login extends Component {
               <input type="password"/> <h3>Password</h3>
             </div>
           </div>
-          <Link to="/h/month/current"><button className="shadow"> <h1>Login</h1> </button></Link>
+          <Link to="/h/month"><button className="shadow"> <h1>Login</h1> </button></Link>
         </div>
       </div>
     );

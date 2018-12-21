@@ -18,7 +18,7 @@ export default class MonthlyView extends Component {
     let month = data.map((week, row) => {
       let days = week.map((day, col) => {
         return (
-          <Day data={day} key={row+'-'+col} />
+          <Day day={day} key={row+'-'+col} />
         );
       });
       return (

@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { BackArrow, MenuButton } from './Icons';
 import Menu from './Menu';
+import { connect } from 'react-redux';
+import { updateDate } from '../ducks/reducer';
 
 const isMonthlyView = true;
 
-export default class Header extends Component {
+class Header extends Component {
 
   showMenu(e){
     let menu = document.querySelector('.Menu');
@@ -13,6 +15,8 @@ export default class Header extends Component {
   }
 
   render(){
+    let { currentDate } = this.props;
+    let { year, monthName, day, weekDay } = currentDate;
     
     return (
       <div className="Header shadow">
@@ -23,15 +27,22 @@ export default class Header extends Component {
             ?
             <div onClick={e => this.showMenu(e)}><MenuButton /></div>
             :
-            <Link to="/h/month/current"><BackArrow /></Link>
+            <Link to="/h/month"><BackArrow /></Link>
           }
         </div>
         <div className="date">
-          <h2>Friday</h2>
-          <h1>14</h1>
-          <h3>December, 2018</h3>
+          <h2>{weekDay}</h2>
+          <h1>{day}</h1>
+          <h3>{monthName}, {year}</h3>
         </div>
       </div>
     );
   }
 }
+
+function mapStateToProps(state){
+  let { currentDate } = state;
+  return { currentDate }
+}
+
+export default connect(mapStateToProps, { updateDate })(Header);
