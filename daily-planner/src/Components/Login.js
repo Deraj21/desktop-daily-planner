@@ -6,7 +6,7 @@ export default class Login extends Component {
   render () {
     return (
       <div className="Login">
-        <div className="title">
+        <div className="title shadow">
           <h1>Daily Planner</h1>
           </div>
         <div className="login-box">
@@ -18,7 +18,7 @@ export default class Login extends Component {
               <input type="password"/> <h3>Password</h3>
             </div>
           </div>
-          <Link to="/h/month/current"><button> <h1>Login</h1> </button></Link>
+          <Link to="/h/month/current"><button className="shadow"> <h1>Login</h1> </button></Link>
         </div>
       </div>
     );

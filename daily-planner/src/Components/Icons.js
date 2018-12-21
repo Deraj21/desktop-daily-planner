@@ -31,3 +31,12 @@ export function BackArrow() {
     </div>
   )
 }
+
+export function ExitIcon() {
+  return (
+    <div className="ExitIcon">
+      <div className="top"></div>
+      <div className="bottom"></div>
+    </div>
+  );
+}

@@ -74,6 +74,7 @@ h3 {
 
 p {
   font-size: 16px;
+  font-family: "Open Sans", Arial, sans-serif;
 }
 
 a {
@@ -102,6 +103,10 @@ button {
   height: 100vh;
   width: 100vw;
   position: relative;
+}
+
+.shadow {
+  box-shadow: 0px 0px 32px -7px #707070;
 }
 
 .Login {
@@ -137,7 +142,6 @@ button {
   padding: 5px 100px;
   font-family: "Shadows Into Light", cursive;
   border: solid black 1px;
-  box-shadow: 0px 0px 32px -7px #707070;
 }
 .Login .login-box {
   display: flex;
@@ -161,8 +165,8 @@ button {
   justify-content: space-around;
   background-color: #EFFFEC;
   padding-top: 70px;
-  min-height: 100vh;
-  min-width: 100vw;
+  min-height: 100%;
+  min-width: 100%;
 }
 .DailyView .times {
   display: flex;
@@ -247,6 +251,17 @@ button {
   display: none;
 }
 
+.CombinedView {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+}
+.CombinedView .left, .CombinedView .right {
+  width: 50vw;
+  height: 100%;
+}
 .Header {
   display: flex;
   align-items: stretch;
@@ -256,7 +271,6 @@ button {
   width: 100vw;
   background-color: white;
   border-bottom: 1px solid black;
-  box-shadow: 0px 0px 32px -7px #707070;
   font-family: "Shadows Into Light", cursive;
   color: black;
 }
@@ -277,7 +291,37 @@ button {
   margin-left: 15px;
 }
 .Header .icon-box:hover {
-  filter: brightness(0%);
+  filter: brightness(50%);
+}
+
+.Menu {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 250px;
+  border-right: 1px solid #707070;
+  background-color: white;
+  padding: 10px;
+  transition: transform 0.3s;
+}
+.Menu .items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+.Menu .items .menu-item {
+  margin: 5px;
+  padding: 5px 0px 5px 25px;
+  width: 200px;
+  cursor: pointer;
+  border: 1px solid #707070;
+}
+
+.hidden-menu {
+  transform: translate(-250px);
+  transition: transform 0.3s;
 }
 
 .BackArrow {
@@ -316,6 +360,30 @@ button {
   height: 4px;
   width: 4px;
   border-radius: 50%;
+}
+
+.ExitIcon {
+  height: 44px;
+  width: 44px;
+  margin-left: -7px;
+  cursor: pointer;
+}
+.ExitIcon div {
+  position: fixed;
+  background-color: #707070;
+  height: 3px;
+  width: 50px;
+  border-radius: 2px;
+}
+.ExitIcon .top {
+  transform: translateY(17px) rotate(45deg);
+}
+.ExitIcon .bottom {
+  transform: translateY(17px) rotate(-45deg);
+}
+
+.ExitIcon:hover {
+  filter: brightness(0%);
 }
 
 /*# sourceMappingURL=App.css.map */

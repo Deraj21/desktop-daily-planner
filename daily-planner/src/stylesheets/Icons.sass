@@ -34,3 +34,24 @@
     height: 4px
     width: 4px
     border-radius: 50%
+
+.ExitIcon
+  height: 44px
+  width: 44px
+  margin-left: -7px
+  cursor: pointer
+
+  div
+    position: fixed
+    background-color: $color-darkgray
+    height: 3px
+    width: 50px
+    border-radius: 2px
+
+  .top
+    transform: translateY(17px) rotate(45deg)
+
+  .bottom
+    transform: translateY(17px) rotate(-45deg)
+.ExitIcon:hover
+  filter: brightness(0%)

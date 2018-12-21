@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
-import Menu from './Menu';
 import Day from './Day';
 
 const data = [ 
@@ -32,7 +31,6 @@ export default class MonthlyView extends Component {
     return (
       <div className="MonthlyView">
         { month }
-        <Menu />
       </div>
     );
   }
