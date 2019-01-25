@@ -1,11 +1,12 @@
 const now = new Date();
 
+// generates 6 weeks for the calendar to later fill with data
 function generateMonth(yr, mo){
   let currentDate = new Date(yr, mo, 1);
   currentDate.setDate(currentDate.getDate() - currentDate.getDay());
 
   let weeks = [];
-  for (let wk = 0; wk < 6; wk++){ // makes 6 weeks of data
+  for (let wk = 0; wk < 6; wk++){ // makes 6 weeks
     let week = [];
     for (let dy = 0; dy < 7; dy++){
       // push current date data into list of days (1 week)
@@ -26,27 +27,58 @@ function generateMonth(yr, mo){
   return weeks;
 }
 
+// filles a generated month with events, and sends it w/ res
+function fillMonth(db, res, month, weeks){
+  // grab events data from db
+  db.get_events([month])
+    .then(events => {
+      // put events into month
+      let filledWeeks = weeks.map(week => {
+        return week.map(day => {
+          for (let i = 0; i < events.length; i++){
+            if (events[i].day === day.date && events[i].month === day.month && events[i].year === day.year){ // if event lands on the day
+              day.events.push(events[i]);
+            }
+          }
+          return day;
+        });
+      })
+
+      res.status(200).send(filledWeeks);
+    })
+    .catch(err => console.log(err.message));
+}
+
 module.exports = {
   // GET "/api/month/:date" - takes in date from params, and generates 6 weeks worth of days, with the users events in them; date is a string "YYYY-MM"
   read: (req, res) => {
     let { date } = req.params;
-    if (!date.includes('-')){
+    const db = req.app.get('db');
+    if (!date.includes('-')){ // if not right format, send error status
       res.status(400).send("date format not accepted");
     } else {
+      // generate empty month
       let year = parseInt(date.split('-')[0]);
       let month = parseInt(date.split('-')[1]);
-
       let weeks = generateMonth(year, month);
-
-      res.status(200).send(weeks);
+      
+      fillMonth(db, res, month, weeks);
     }
   },
   // GET "/api/currentMonth" - same as above, but gives month of todays date
   readCurrent: (req, res) => {
-    console.log('getting current month data: ' + now.getMonth());
+    const db = req.app.get('db');
     let weeks = generateMonth(now.getFullYear(), now.getMonth());
     
-    res.status(200).send(weeks);
+    fillMonth(db, res, now.getMonth(), weeks);
+  },
+  // POST "/api/event" - creates new event in DB
+  create: (req, res) => {
+    const db = req.app.get('db');
+    let { start_hour, end_hour, day, month, year, description, user_id } = req.body;
+    db.create_event([start_hour, end_hour, day, month, year, description, user_id])
+      .then( response => res.status(200).send())
+      .catch( err => console.log(err));
   }
 }
 

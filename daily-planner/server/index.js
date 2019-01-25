@@ -35,6 +35,7 @@ massive(CONNECTION_STRING)
 // event endpoints
 app.get('/api/month/:date', ec.read);
 app.get('/api/currentMonth', ec.readCurrent);
+app.post('/api/event', ec.create);
 
 let port  = 4000 || PORT;
 app.listen(port, () => console.log(`Server listening on port ${port}`));
