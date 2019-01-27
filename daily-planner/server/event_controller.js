@@ -51,7 +51,7 @@ function fillMonth(db, res, month, weeks){
 
 module.exports = {
   // GET "/api/month/:date" - takes in date from params, and generates 6 weeks worth of days, with the users events in them; date is a string "YYYY-MM"
-  read: (req, res) => {
+  readMonth: (req, res) => {
     let { date } = req.params;
     const db = req.app.get('db');
     if (!date.includes('-')){ // if not right format, send error status
@@ -65,12 +65,21 @@ module.exports = {
       fillMonth(db, res, month, weeks);
     }
   },
-  // GET "/api/currentMonth" - same as above, but gives month of todays date
-  readCurrent: (req, res) => {
+  // GET "/api/currentMonth" - same as above, but for month of todays date
+  readCurrentMonth: (req, res) => {
     const db = req.app.get('db');
     let weeks = generateMonth(now.getFullYear(), now.getMonth());
     
     fillMonth(db, res, now.getMonth(), weeks);
+  },
+  // GET "/api/event/:id" - gets one event
+  readEvent: (req, res) => {
+    let { id } = req.params;
+    const db = req.app.get('db');
+
+    db.get_event([id])
+      .then( response => res.status(200).send(response[0]))
+      .catch( err => console.log(err.message));
   },
   // POST "/api/event" - creates new event in DB
   create: (req, res) => {
@@ -79,6 +88,32 @@ module.exports = {
     db.create_event([start_hour, end_hour, day, month, year, description, user_id])
       .then( response => res.status(200).send())
       .catch( err => console.log(err));
+  },
+  // PUT "/api/event/:id" - edits event w/ given id
+  edit: (req, res) => {
+    let { id } = req.params;
+    const db = req.app.get('db');
+
+    db.get_event([id])
+      .then( response => {
+        let data = Object.assign({}, response[0], req.body);
+        let { start_hour, end_hour, day, month, year, description } = data;
+
+        db.edit_event([id, start_hour, end_hour, day, month, year, description])
+          .then( response => res.status(200).send(response[0]) )
+          .catch();
+      })
+      .catch( err => res.status(404).send(err.message));
+
+  },
+  // DELETE "/api/event/:id" - deletes event w/ id
+  delete: (req, res) => {
+    let { id } = req.params;
+    const db = req.app.get('db');
+
+    db.delete_event([id])
+      .then( response => res.status(200).send(response))
+      .catch( err => res.status(404).send(err.message));
   }
 }
 

@@ -2,9 +2,9 @@ const express = require('express'),
       session = require('express-session'),
       bodyParser = require('body-parser'),
       massive = require('massive'),
-      passport = require('passport'),
-      Auth0Strategy = require('passport-auth0'),
-      uc = require('./user_controller'),
+      // passport = require('passport'),
+      // Auth0Strategy = require('passport-auth0'),
+      // uc = require('./user_controller'),
       ec = require('./event_controller');
 
 require('dotenv').config();
@@ -22,7 +22,9 @@ app.use( session({
 massive(CONNECTION_STRING)
   .then( dbInstance => {
     app.set('db', dbInstance);
+    console.log("Conected to db");
   })
+  .catch( err => console.log(err.message));
 
 ////
 // passport strategy & stuff here
@@ -33,9 +35,12 @@ massive(CONNECTION_STRING)
 // user endpoints
 
 // event endpoints
-app.get('/api/month/:date', ec.read);
-app.get('/api/currentMonth', ec.readCurrent);
+app.get('/api/month/:date', ec.readMonth);
+app.get('/api/currentMonth', ec.readCurrentMonth);
+app.get('/api/event/:id', ec.readEvent);
 app.post('/api/event', ec.create);
+app.put('/api/event/:id', ec.edit);
+app.delete('/api/event/:id', ec.delete);
 
 let port  = 4000 || PORT;
 app.listen(port, () => console.log(`Server listening on port ${port}`));
