@@ -4,7 +4,7 @@ const express = require('express'),
       massive = require('massive'),
       // passport = require('passport'),
       // Auth0Strategy = require('passport-auth0'),
-      // uc = require('./user_controller'),
+      uc = require('./user_controller'),
       ec = require('./event_controller');
 
 require('dotenv').config();
@@ -33,6 +33,9 @@ massive(CONNECTION_STRING)
 // login & logout endpoints
 
 // user endpoints
+app.get('/api/user/:id', uc.read);
+app.post('/api/user', uc.create);     /// NEED TO FINISH MAKING THESE
+app.put('/api/user/:id', uc.edit);
 
 // event endpoints
 app.get('/api/month/:date', ec.readMonth);
