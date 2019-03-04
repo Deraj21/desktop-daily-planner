@@ -1,9 +1,7 @@
 module.exports = {
   // GET "/api/user/:id" - grabs user's data off session
   read: (req, res) => {
-    let { id } = req.params;
-    const db = req.app.get('db');
-    res.status(200).send('creating user '+id);
+    console.log(`getting user:${req.session}`)
   },
   // POST "/api/user" - creates new user w/ auth0 data
   create: (req, res) => {

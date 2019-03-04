@@ -1,0 +1,29 @@
+.ChangeColor
+  cursor: crosshair
+  
+  p
+    border-bottom: 1px solid gray
+
+  span
+    font-family: $font-sans
+    font-size: 14px
+    margin-left: 20px
+    font-style: italic
+    text-decoration: underline
+
+  .colors
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: space-between
+    align-items: center
+
+    .color
+      height: 25px
+      width: 25px
+      margin: 6px
+      border: 1px solid dimgray
+      border-radius: 50%
+
+    .color:hover
+      box-shadow: 0px 0px 7px 1px gray

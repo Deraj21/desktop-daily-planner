@@ -11,7 +11,7 @@ const data = [
   [ 30, 31,  1,  2,  3,  4,  5 ]
 ]
 
-export default class MonthlyView extends Component {
+class MonthlyView extends Component {
 
   render () {
 
@@ -35,3 +35,5 @@ export default class MonthlyView extends Component {
     );
   }
 }
+
+export default MonthlyView;
