@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ExitIcon } from './Icons';
 import ChangeColor from './ChangeColor';
+import { Link } from 'react-router-dom';
 
 // dummy data
 const first_name = "Jared",
@@ -27,7 +28,7 @@ export default class Menu extends Component {
         </div>
 
         <ul className="items">
-          <li className="menu-item"><p>Logout</p></li>
+          <li className="menu-item"><Link to="/"><p>Logout</p></Link></li>
           <ChangeColor />
           <li className="menu-item"><p>Menu Item</p></li>
           <li className="menu-item"><p>Menu Item</p></li>

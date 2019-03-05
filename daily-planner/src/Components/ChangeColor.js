@@ -26,6 +26,8 @@ class ChangeColor extends Component {
   }
 
   save(){
+    // MAKE AXIOS CALL TO CHANGE USER COLOR IN DB HERE //
+
     this.closeFullSize();
   }
 

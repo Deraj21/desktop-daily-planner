@@ -2,8 +2,30 @@ import React, { Component } from 'react';
 import './App.css';
 import routes from './routes';
 import { connect } from 'react-redux';
+import { updateIsDualView } from './ducks/reducer';
 
 class App extends Component {
+
+  onResize(e){
+    let width = e.target.innerWidth;
+    let { isDualView } = this.props;
+    console.log(isDualView);
+
+    if (width >= 830){
+      if (!isDualView){
+        this.props.updateIsDualView(true);
+      }
+    } else {
+      if (isDualView){
+        this.props.updateIsDualView(false)
+      }
+    }
+
+  }
+
+  componentDidMount(){
+    window.addEventListener('resize', e => this.onResize(e));
+  }
 
   render() {
     let { currentBackgroundColor } = this.props;
@@ -18,8 +40,9 @@ class App extends Component {
 
 function mapStateToProps( state ){
   return {
-    currentBackgroundColor: state.currentBackgroundColor
+    currentBackgroundColor: state.currentBackgroundColor,
+    isDualView: state.isDualView
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { updateIsDualView })(App);

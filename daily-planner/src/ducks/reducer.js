@@ -12,12 +12,16 @@ let initialState = {
     email: "deraj21@gmail.com",
     background_color: "palegreen"
   },
-  currentBackgroundColor: "palegreen"
+  currentBackgroundColor: "palegreen",
+  isDualView: false
 }
 
+// whatchamacallits
 const UPDATE_DATE = "UPDATE_DATE",
-      UPDATE_CURRENT_BACKGROUND_COLOR = "UPDATE_CURRENT_BACKGROUND_COLOR";
+      UPDATE_CURRENT_BACKGROUND_COLOR = "UPDATE_CURRENT_BACKGROUND_COLOR",
+      UPDATE_IS_DUAL_VIEW = "UPDATE_IS_DUAL_VIEW";
 
+// reducer
 export default function reducer(state = initialState, action){
   let { type, payload } = action;
   switch(type){
@@ -25,6 +29,8 @@ export default function reducer(state = initialState, action){
       return {...state, date: payload}
     case UPDATE_CURRENT_BACKGROUND_COLOR:
       return {...state, currentBackgroundColor: payload}
+    case UPDATE_IS_DUAL_VIEW:
+      return {...state, isDualView: payload}
     default:
       return {...state};
   }
@@ -42,4 +48,11 @@ export function updateCurrentBackgroundColor(color){
     type: UPDATE_CURRENT_BACKGROUND_COLOR,
     payload: color
   };
+}
+
+export function updateIsDualView(val){
+  return {
+    type: UPDATE_IS_DUAL_VIEW,
+    payload: val
+  }
 }
