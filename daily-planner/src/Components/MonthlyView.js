@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
 import { connect } from 'react-redux';
-import { updateIsMonthlyView, updateDate } from '../ducks/reducer';
+import { updateIsMonthlyView, updateDate, updateMonthData } from '../ducks/reducer';
 import Day from './Day';
-
-const data = [ 
-  [ 25, 26, 27, 28, 29, 30,  1 ],
-  [  2,  3,  4,  5,  6,  7,  8 ],
-  [  9, 10, 11, 12, 13, 14, 15 ],
-  [ 16, 17, 18, 19, 20, 21, 22 ],
-  [ 23, 24, 25, 26, 27, 28, 29 ],
-  [ 30, 31,  1,  2,  3,  4,  5 ]
-]
 
 class MonthlyView extends Component {
   constructor(props){
@@ -19,17 +11,28 @@ class MonthlyView extends Component {
     this.changeView = this.changeView.bind(this);
   }
 
+  componentDidMount(){
+    let { year, month, day } = this.props.currentDate;
+    Axios.get(`/api/month/${month}-${day}-${year}`)
+      .then(response => {
+        console.log(response.data);
+        this.props.updateMonthData(response.data);
+      })
+      .catch( err => console.log(err.message));
+  }
+
   changeView(date){
     this.props.updateIsMonthlyView(false);
     // add updateDate() here once hooked up to server
   }
 
   render () {
+    let { monthData } = this.props;
 
-    let month = data.map((week, row) => {
-      let days = week.map((day, col) => {
+    let month = monthData.map((week, row) => {
+      let days = week.map((item, col) => {
         return (
-          <Day changeView={this.changeView} day={day} key={row+'-'+col} />
+          <Day changeView={this.changeView} day={item.date} key={row+'-'+col} />
         );
       });
       return (
@@ -48,8 +51,8 @@ class MonthlyView extends Component {
 }
 
 function mapStateToProps(state){
-  let { isMonthlyView, currentDate } = state;
-  return { isMonthlyView, currentDate };
+  let { isMonthlyView, currentDate, monthData } = state;
+  return { isMonthlyView, currentDate, monthData };
 }
 
-export default connect(mapStateToProps, { updateIsMonthlyView, updateDate })(MonthlyView);
+export default connect(mapStateToProps, { updateIsMonthlyView, updateDate, updateMonthData })(MonthlyView);
