@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import routes from './routes';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateIsDualView } from './ducks/reducer';
 
@@ -45,4 +46,6 @@ function mapStateToProps( state ){
   }
 }
 
-export default connect(mapStateToProps, { updateIsDualView })(App);
+export default withRouter(
+  connect(mapStateToProps, { updateIsDualView })(App)
+);

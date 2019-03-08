@@ -13,13 +13,15 @@ let initialState = {
     background_color: "palegreen"
   },
   currentBackgroundColor: "palegreen",
-  isDualView: false
+  isDualView: false,
+  isMonthlyView: true
 }
 
 // whatchamacallits
 const UPDATE_DATE = "UPDATE_DATE",
       UPDATE_CURRENT_BACKGROUND_COLOR = "UPDATE_CURRENT_BACKGROUND_COLOR",
-      UPDATE_IS_DUAL_VIEW = "UPDATE_IS_DUAL_VIEW";
+      UPDATE_IS_DUAL_VIEW = "UPDATE_IS_DUAL_VIEW",
+      UPDATE_IS_MONTHLY_VIEW = "UPDATE_IS_MONTHLY_VIEW";
 
 // reducer
 export default function reducer(state = initialState, action){
@@ -31,11 +33,14 @@ export default function reducer(state = initialState, action){
       return {...state, currentBackgroundColor: payload}
     case UPDATE_IS_DUAL_VIEW:
       return {...state, isDualView: payload}
+    case UPDATE_IS_MONTHLY_VIEW:
+      return {...state, isMonthlyView: payload}
     default:
       return {...state};
   }
 }
 
+// action creators
 export function updateDate(date){
   return {
     type: UPDATE_DATE,
@@ -53,6 +58,13 @@ export function updateCurrentBackgroundColor(color){
 export function updateIsDualView(val){
   return {
     type: UPDATE_IS_DUAL_VIEW,
+    payload: val
+  }
+}
+
+export function updateIsMonthlyView(val){
+  return {
+    type: UPDATE_IS_MONTHLY_VIEW,
     payload: val
   }
 }

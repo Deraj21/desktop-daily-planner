@@ -11,8 +11,8 @@ export default (
   <div className="Router">
     <Route exact path="/" component={Login}/>
     <Route path="/h/" component={Header}/>
-    <Route path="/h/day" component={DailyView}/>
-    <Route path="/h/month" component={MonthlyView}/>
-    <Route path="/h/both" component={CombinedView} />
+    <Route path="/h/day/" component={DailyView}/>
+    <Route path="/h/month/" component={MonthlyView}/>
+    <Route path="/h/both/" component={CombinedView} />
   </div>
 );

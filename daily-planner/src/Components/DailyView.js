@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import { updateIsMonthlyView } from '../ducks/reducer';
 import Hour from './Hour';
 
 const times = [
@@ -8,6 +9,11 @@ const times = [
 ]
 
 class DailyView extends Component {
+  constructor(props){
+    super(props);
+
+    this.props.updateIsMonthlyView(false);
+  }
   
   render () {
     let hours = times.map((item, i) => <Hour className={'hour-'+i} key={i} id={i} /> );
@@ -31,4 +37,9 @@ class DailyView extends Component {
   }
 }
 
-export default DailyView;
+function mapStateToProps(state){
+  let { currentDate, isMonthlyView } = state;
+  return { currentDate, isMonthlyView };
+}
+
+export default connect(mapStateToProps, { updateIsMonthlyView })(DailyView);

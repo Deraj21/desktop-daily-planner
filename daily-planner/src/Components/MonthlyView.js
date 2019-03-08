@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { updateIsMonthlyView, updateDate } from '../ducks/reducer';
 import Day from './Day';
 
 const data = [ 
@@ -12,13 +13,23 @@ const data = [
 ]
 
 class MonthlyView extends Component {
+  constructor(props){
+    super(props);
+
+    this.changeView = this.changeView.bind(this);
+  }
+
+  changeView(date){
+    this.props.updateIsMonthlyView(false);
+    // add updateDate() here once hooked up to server
+  }
 
   render () {
 
     let month = data.map((week, row) => {
       let days = week.map((day, col) => {
         return (
-          <Day day={day} key={row+'-'+col} />
+          <Day changeView={this.changeView} day={day} key={row+'-'+col} />
         );
       });
       return (
@@ -36,4 +47,9 @@ class MonthlyView extends Component {
   }
 }
 
-export default MonthlyView;
+function mapStateToProps(state){
+  let { isMonthlyView, currentDate } = state;
+  return { isMonthlyView, currentDate };
+}
+
+export default connect(mapStateToProps, { updateIsMonthlyView, updateDate })(MonthlyView);

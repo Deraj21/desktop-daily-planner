@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import { BackArrow, MenuButton } from './Icons';
 import Menu from './Menu';
 import { connect } from 'react-redux';
-import { updateDate } from '../ducks/reducer';
-
-const isMonthlyView = true;
+import { updateDate, updateIsMonthlyView } from '../ducks/reducer';
 
 class Header extends Component {
 
@@ -14,8 +12,12 @@ class Header extends Component {
     menu.classList.remove('hidden-menu');
   }
 
+  changeView(){
+    this.props.updateIsMonthlyView(true);
+  }
+
   render(){
-    let { currentDate } = this.props;
+    let { currentDate, isMonthlyView } = this.props;
     let { year, monthName, day, weekDay } = currentDate;
     
     return (
@@ -27,7 +29,7 @@ class Header extends Component {
             ?
             <div onClick={e => this.showMenu(e)}><MenuButton /></div>
             :
-            <Link to="/h/month"><BackArrow /></Link>
+            <Link onClick={() => this.changeView()} to="/h/month"><BackArrow /></Link>
           }
         </div>
         <div className="date">
@@ -41,8 +43,8 @@ class Header extends Component {
 }
 
 function mapStateToProps(state){
-  let { currentDate } = state;
-  return { currentDate }
+  let { currentDate, isMonthlyView } = state;
+  return { currentDate, isMonthlyView }
 }
 
-export default connect(mapStateToProps, { updateDate })(Header);
+export default connect(mapStateToProps, { updateDate, updateIsMonthlyView })(Header);
